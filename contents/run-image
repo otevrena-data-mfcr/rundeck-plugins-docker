@@ -29,14 +29,14 @@ args = parser.parse_args()
 
 possible_opts = ['add-host', 'blkio-weight', 'cap-add', 'cap-drop', 'cidfile',
                  'cpu-shares', 'cpu-period', 'cpuset-cpus', 'cpuset-mems',
-                 'cpu-quota', 'detach', 'device', 'dns', 'env', 'interactive',
+                 'cpu-quota', 'detach', 'device', 'dns', 'env', 'env-file', 'interactive',
                  'ipc', 'label', 'log-driver', 'log-opt', 'lxc-conf', 'memory',
                  'memory-swap', 'name', 'net', 'oom-kill-disable', 'publish',
                  'privileged', 'restart', 'rm', 'security-opt', 'volume',
                  'volume-from', 'ulimit', 'uts', 'tty', 'workdir', 'user']
 OPTIONS = []
 
-for env_var_name, env_var_value in os.environ.iteritems():
+for env_var_name, env_var_value in os.environ.items():
     if (env_var_name.startswith('RD_OPTION') or
        env_var_name.startswith('RD_NODE') or
        env_var_name.startswith('RD_JOB')) and \
@@ -99,7 +99,7 @@ p = Popen(
 while True:
     line = p.stdout.readline().rstrip()
     if line:
-        print line
+        print ( line )
     if p.poll() is not None:
         break
 
